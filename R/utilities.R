@@ -27,7 +27,7 @@
         .printf("url == %s", url)
     response <- GET(url)
     result <- http_status(response)
-    if (result$category != "success")
+    if (tolower(result$category) != "success")
         stop(sprintf("invalid request, server returned %s (%s)",
             result$message, url))
         content <- .strip(content(response, "text"))
